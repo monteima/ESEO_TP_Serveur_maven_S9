@@ -88,7 +88,7 @@ public class VilleDAOimpl implements VilleDAO {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Erreur");
+			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
 
@@ -107,7 +107,7 @@ public class VilleDAOimpl implements VilleDAO {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Erreur");
+			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
 	}
@@ -126,7 +126,7 @@ public class VilleDAOimpl implements VilleDAO {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Erreur");
+			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
 
@@ -143,7 +143,7 @@ public class VilleDAOimpl implements VilleDAO {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Erreur");
+			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
 	}
