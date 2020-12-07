@@ -30,7 +30,7 @@ public class JDBCConfiguration {
 
         	
 			} catch (SQLException e) {
-	    	    e.printStackTrace();
+	    	    logger.log(Level.INFO, "context", e);
 	    		logger.log(Level.INFO, "Erreur");
 	    	    System.exit(0);
 			}
