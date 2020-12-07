@@ -48,7 +48,7 @@ public class VilleDAOimpl implements VilleDAO {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+    	    logger.log(Level.INFO, "context", e);
 			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
@@ -87,7 +87,7 @@ public class VilleDAOimpl implements VilleDAO {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+    	    logger.log(Level.INFO, "context", e);
 			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
@@ -106,7 +106,7 @@ public class VilleDAOimpl implements VilleDAO {
 			statement.executeUpdate(sql1);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+    	    logger.log(Level.INFO, "context", e);
 			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
@@ -125,7 +125,7 @@ public class VilleDAOimpl implements VilleDAO {
 			statement.executeUpdate(sql1);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+    	    logger.log(Level.INFO, "context", e);
 			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
@@ -142,7 +142,7 @@ public class VilleDAOimpl implements VilleDAO {
 			statement.executeUpdate(sql1);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+    	    logger.log(Level.INFO, "context", e);
 			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
