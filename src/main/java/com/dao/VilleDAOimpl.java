@@ -15,11 +15,10 @@ import com.dto.Ville;
 
 @Repository
 public class VilleDAOimpl implements VilleDAO {
-	
+
 	Logger logger = Logger.getLogger("logger");
 	private static final String ERREUR = "erreur";
 	private static final String CONTEXT = "context";
-
 
 	public ArrayList<Ville> findAllVilles() {
 		ArrayList<Ville> listVille = new ArrayList<Ville>();
@@ -27,34 +26,35 @@ public class VilleDAOimpl implements VilleDAO {
 		try {
 			Connection conn = JDBCConfiguration.getConnection();
 
-//			java.sql.Statement st = null;
-//			st = conn.createStatement();
-			
-			java.sql.Statement st = conn.createStatement();
-			
-
-			ResultSet rs = null;
-
 			String sql1 = "SELECT * FROM `ville_france`";
-			rs = st.executeQuery(sql1);
 
-			while (rs.next()) {
-				Ville ville = new Ville();
+			try (Statement st = conn.createStatement()) {
 
-				ville.setCodeCommune(rs.getString("Code_commune_INSEE"));
-				ville.setNomCommune(rs.getString("Nom_commune"));
-				ville.setCodePostal(rs.getString("Code_postal"));
-				ville.setLibelleAcheminement(rs.getString("Libelle_acheminement"));
-				ville.setLigne(rs.getString("Ligne_5"));
-				ville.setLatitude(rs.getString("Latitude"));
-				ville.setLongitude(rs.getString("Longitude"));
+				ResultSet rs = null;
 
-				listVille.add(ville);
+				rs = st.executeQuery(sql1);
+
+				while (rs.next()) {
+					Ville ville = new Ville();
+
+					ville.setCodeCommune(rs.getString("Code_commune_INSEE"));
+					ville.setNomCommune(rs.getString("Nom_commune"));
+					ville.setCodePostal(rs.getString("Code_postal"));
+					ville.setLibelleAcheminement(rs.getString("Libelle_acheminement"));
+					ville.setLigne(rs.getString("Ligne_5"));
+					ville.setLatitude(rs.getString("Latitude"));
+					ville.setLongitude(rs.getString("Longitude"));
+
+					listVille.add(ville);
+
+				}
+
+			} catch (SQLException e) {
 
 			}
 
 		} catch (Exception e) {
-    	    logger.log(Level.INFO, CONTEXT, e);
+			logger.log(Level.INFO, CONTEXT, e);
 			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
@@ -68,45 +68,35 @@ public class VilleDAOimpl implements VilleDAO {
 		try {
 			Connection conn = JDBCConfiguration.getConnection();
 
-//			java.sql.Statement st = null;
-//			st = conn.createStatement();
-			
 			String sql1 = "SELECT * FROM `ville_france` WHERE `Code_commune_INSEE`='" + codeCommune + "'";
 
-			
-			try(Statement st = conn.createStatement()){
-				
-			
+			try (Statement st = conn.createStatement()) {
 
-			ResultSet rs = null;
+				ResultSet rs = null;
 
-			rs = st.executeQuery(sql1);
+				rs = st.executeQuery(sql1);
 
-			while (rs.next()) {
-				Ville ville = new Ville();
+				while (rs.next()) {
+					Ville ville = new Ville();
 
-				ville.setCodeCommune(rs.getString("Code_commune_INSEE"));
-				ville.setNomCommune(rs.getString("Nom_commune"));
-				ville.setCodePostal(rs.getString("Code_postal"));
-				ville.setLibelleAcheminement(rs.getString("Libelle_acheminement"));
-				ville.setLigne(rs.getString("Ligne_5"));
-				ville.setLatitude(rs.getString("Latitude"));
-				ville.setLongitude(rs.getString("Longitude"));
+					ville.setCodeCommune(rs.getString("Code_commune_INSEE"));
+					ville.setNomCommune(rs.getString("Nom_commune"));
+					ville.setCodePostal(rs.getString("Code_postal"));
+					ville.setLibelleAcheminement(rs.getString("Libelle_acheminement"));
+					ville.setLigne(rs.getString("Ligne_5"));
+					ville.setLatitude(rs.getString("Latitude"));
+					ville.setLongitude(rs.getString("Longitude"));
 
-				listVille.add(ville);
+					listVille.add(ville);
+
+				}
+
+			} catch (SQLException e) {
 
 			}
-			
-			
-			}catch (SQLException e) {
-//		        JDBCTutorialUtilities.printSQLException(e);
-		    }
-			
-			
-			
 
 		} catch (Exception e) {
-    	    logger.log(Level.INFO, CONTEXT, e);
+			logger.log(Level.INFO, CONTEXT, e);
 			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
@@ -121,11 +111,16 @@ public class VilleDAOimpl implements VilleDAO {
 
 			String sql1 = "DELETE FROM `ville_france` WHERE `Code_postal`=" + codePostal + "";
 
-			Statement statement = conn.createStatement();
-			statement.executeUpdate(sql1);
+			try (Statement st = conn.createStatement()) {
+
+				st.executeUpdate(sql1);
+
+			} catch (SQLException e) {
+
+			}
 
 		} catch (Exception e) {
-    	    logger.log(Level.INFO, CONTEXT, e);
+			logger.log(Level.INFO, CONTEXT, e);
 			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
@@ -140,11 +135,17 @@ public class VilleDAOimpl implements VilleDAO {
 					+ "VALUES ('" + ville.getCodeCommune() + "', '" + ville.getNomCommune() + "', '"
 					+ ville.getCodePostal() + "', '" + ville.getLibelleAcheminement() + "', '" + ville.getLigne()
 					+ "', '" + ville.getLatitude() + "', '" + ville.getLongitude() + "');";
-			Statement statement = conn.createStatement();
-			statement.executeUpdate(sql1);
+
+			try (Statement st = conn.createStatement()) {
+
+				st.executeUpdate(sql1);
+
+			} catch (SQLException e) {
+
+			}
 
 		} catch (Exception e) {
-    	    logger.log(Level.INFO, CONTEXT, e);
+			logger.log(Level.INFO, CONTEXT, e);
 			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
@@ -154,14 +155,22 @@ public class VilleDAOimpl implements VilleDAO {
 	public void putInfoVille(Ville ville) {
 		try {
 			Connection conn = JDBCConfiguration.getConnection();
-						
-			String sql1 = "UPDATE `ville_france` SET `Nom_commune`='" + ville.getNomCommune() + "',`Code_postal`='" + ville.getCodePostal() + "',`Libelle_acheminement`='"+ ville.getLibelleAcheminement() +"',`Ligne_5`='" + ville.getLigne() + "',`Latitude`='" + ville.getLatitude() + "',`Longitude`='" + ville.getLongitude() + "' WHERE `Code_commune_INSEE`='" + ville.getCodeCommune() + "'";
 
-			Statement statement = conn.createStatement();
-			statement.executeUpdate(sql1);
+			String sql1 = "UPDATE `ville_france` SET `Nom_commune`='" + ville.getNomCommune() + "',`Code_postal`='"
+					+ ville.getCodePostal() + "',`Libelle_acheminement`='" + ville.getLibelleAcheminement()
+					+ "',`Ligne_5`='" + ville.getLigne() + "',`Latitude`='" + ville.getLatitude() + "',`Longitude`='"
+					+ ville.getLongitude() + "' WHERE `Code_commune_INSEE`='" + ville.getCodeCommune() + "'";
+
+			try (Statement st = conn.createStatement()) {
+
+				st.executeUpdate(sql1);
+
+			} catch (SQLException e) {
+
+			}
 
 		} catch (Exception e) {
-    	    logger.log(Level.INFO, CONTEXT, e);
+			logger.log(Level.INFO, CONTEXT, e);
 			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
