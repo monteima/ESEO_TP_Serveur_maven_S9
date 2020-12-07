@@ -26,8 +26,11 @@ public class VilleDAOimpl implements VilleDAO {
 		try {
 			Connection conn = JDBCConfiguration.getConnection();
 
-			java.sql.Statement st = null;
-			st = conn.createStatement();
+//			java.sql.Statement st = null;
+//			st = conn.createStatement();
+			
+			java.sql.Statement st = conn.createStatement();;
+			
 
 			ResultSet rs = null;
 
