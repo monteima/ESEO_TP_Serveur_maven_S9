@@ -5,7 +5,7 @@ import com.dto.Ville;
 
 public interface VilleDAO {
 
-	public ArrayList<Ville> findAllVilles();
+	public ArrayList<Ville> findAllVilles() ;
 
 	public ArrayList<Ville> findVilleByValue(String codeCommune);
 
