@@ -30,22 +30,28 @@ public class VilleDAOimpl implements VilleDAO {
 
 			try (Statement st = conn.createStatement()) {
 
-				ResultSet rs = null;
+				try (ResultSet rs = st.executeQuery(sql1)) {
 
-				rs = st.executeQuery(sql1);
+//				ResultSet rs = null;
+//
+//				rs = st.executeQuery(sql1);
 
-				while (rs.next()) {
-					Ville ville = new Ville();
+					while (rs.next()) {
+						Ville ville = new Ville();
 
-					ville.setCodeCommune(rs.getString("Code_commune_INSEE"));
-					ville.setNomCommune(rs.getString("Nom_commune"));
-					ville.setCodePostal(rs.getString("Code_postal"));
-					ville.setLibelleAcheminement(rs.getString("Libelle_acheminement"));
-					ville.setLigne(rs.getString("Ligne_5"));
-					ville.setLatitude(rs.getString("Latitude"));
-					ville.setLongitude(rs.getString("Longitude"));
+						ville.setCodeCommune(rs.getString("Code_commune_INSEE"));
+						ville.setNomCommune(rs.getString("Nom_commune"));
+						ville.setCodePostal(rs.getString("Code_postal"));
+						ville.setLibelleAcheminement(rs.getString("Libelle_acheminement"));
+						ville.setLigne(rs.getString("Ligne_5"));
+						ville.setLatitude(rs.getString("Latitude"));
+						ville.setLongitude(rs.getString("Longitude"));
 
-					listVille.add(ville);
+						listVille.add(ville);
+
+					}
+
+				} catch (SQLException e) {
 
 				}
 
