@@ -32,10 +32,6 @@ public class VilleDAOimpl implements VilleDAO {
 
 				try (ResultSet rs = st.executeQuery(sql1)) {
 
-//				ResultSet rs = null;
-//
-//				rs = st.executeQuery(sql1);
-
 					while (rs.next()) {
 						Ville ville = new Ville();
 
@@ -78,9 +74,7 @@ public class VilleDAOimpl implements VilleDAO {
 
 			try (Statement st = conn.createStatement()) {
 
-				ResultSet rs = null;
-
-				rs = st.executeQuery(sql1);
+				try (ResultSet rs = st.executeQuery(sql1)) {
 
 				while (rs.next()) {
 					Ville ville = new Ville();
@@ -94,6 +88,10 @@ public class VilleDAOimpl implements VilleDAO {
 					ville.setLongitude(rs.getString("Longitude"));
 
 					listVille.add(ville);
+
+				}
+				
+				} catch (SQLException e) {
 
 				}
 
