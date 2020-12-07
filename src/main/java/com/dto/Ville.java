@@ -5,7 +5,7 @@ public class Ville {
 	
 	public String codeCommune;
 	public String nomCommune;
-	public String codePostale;
+	public String codePostal;
 	public String libelleAcheminement;
 	public String ligne;
 	public String latitude;
@@ -28,12 +28,12 @@ public class Ville {
 		this.nomCommune = nomCommune;
 	}
 
-	public String getCodePostale() {
-		return codePostale;
+	public String getCodePostal() {
+		return codePostal;
 	}
 
-	public void setCodePostale(String codePostale) {
-		this.codePostale = codePostale;
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
 	}
 
 	public String getLibelleAcheminement() {

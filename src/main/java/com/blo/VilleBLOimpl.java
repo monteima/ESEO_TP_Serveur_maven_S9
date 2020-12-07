@@ -10,63 +10,38 @@ import com.dto.Ville;
 
 @Service
 public class VilleBLOimpl implements VilleBLO {
-	
+
 	@Autowired
 	private VilleDAO villeDAO;
 
-	public ArrayList<Ville> getInfoVille(String codePostal) {
+	public ArrayList<Ville> getInfoVille(String codeCommune) {
 		ArrayList<Ville> listeVille;
-		
-		if (codePostal == null || "".equalsIgnoreCase(codePostal)) {
+
+		if (codeCommune == null || "".equalsIgnoreCase(codeCommune)) {
 			listeVille = villeDAO.findAllVilles();
 		} else {
-			listeVille = villeDAO.findVilleByValue(codePostal);
+			listeVille = villeDAO.findVilleByValue(codeCommune);
 		}
-		
+
 		return listeVille;
 	}
-		
-	
+
 	public void deleteInfoVille(String codePostal) {
-		
+
 		villeDAO.deleteInfoVille(codePostal);
-		
+
 	}
-	
-	public void postInfoVille() {
-		
-		Ville ville = new Ville();
-    	
-    	ville.setCodeCommune("98000");
-    	ville.setNomCommune("Boulogne-Billancourt");
-    	ville.setCodePostale("92100");
-    	ville.setLibelleAcheminement("");
-    	ville.setLigne("Ligne_5");
-    	ville.setLatitude("675765");
-    	ville.setLongitude("867766");
-		
+
+	public void postInfoVille(Ville ville) {
+
 		villeDAO.postInfoVille(ville);
 
 	}
 
+	public void putInfoVille(Ville ville) {
 
-	public void putInfoVille(String codePostal) {
-		
-		Ville ville = new Ville();
-    	
-    	ville.setCodeCommune("98500");
-//    	ville.setNomCommune("Boulogne-Billancourt");
-//    	ville.setCodePostale("92100");
-//    	ville.setLibelleAcheminement("");
-//    	ville.setLigne("Ligne_5");
-//    	ville.setLatitude("675765");
-//    	ville.setLongitude("867766");
-		
-		
-//		villeDAO.putInfoVille(codePostal, ville);
-		
+		villeDAO.putInfoVille(ville);
+
 	}
 
-
-	
 }
