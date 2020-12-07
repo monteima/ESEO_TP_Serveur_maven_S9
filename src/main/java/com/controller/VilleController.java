@@ -1,14 +1,8 @@
 package com.controller;
 
-//import java.awt.EventQueue;
-//import java.sql.Connection;
-//import java.sql.DriverManager;
-//import java.sql.ResultSet;
-import java.sql.SQLException;
-//import java.sql.Statement;
-import java.util.ArrayList;
 
-//import javax.naming.spi.DirStateFactory.Result;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,10 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.blo.VilleBLO;
-//import com.config.JDBCConfiguration;
 import com.dto.Ville;
-//import com.google.gson.Gson;
-//import com.mysql.jdbc.PreparedStatement;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,9 +27,8 @@ public class VilleController {
 	public ArrayList<Ville> appelGet(@RequestParam(required = false, value = "codeCommune") String param) {
 
 		System.out.println("Appel Get");
-		ArrayList<Ville> listVille = villeBLOService.getInfoVille(param);
 
-		return listVille;
+		return villeBLOService.getInfoVille(param);
 
 	}
 

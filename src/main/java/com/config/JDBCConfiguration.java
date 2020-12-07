@@ -2,7 +2,6 @@ package com.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
@@ -12,12 +11,10 @@ public class JDBCConfiguration {
 
 			Connection conn = null;
 			
-			String BDD = "ville_de_france";
-	    	String url = "jdbc:mysql://localhost:3306/" + BDD;
+			String bdd = "ville_de_france";
+	    	String url = "jdbc:mysql://localhost:3306/" + bdd;
 	    	String user = "root";
 	    	String passwd = "";
-	    	java.sql.Statement st = null;
-		    ResultSet rs = null;
 			
 			
         try {
@@ -29,6 +26,7 @@ public class JDBCConfiguration {
         	
 			} catch (SQLException e) {
 	    	    e.printStackTrace();
+//	    	    LOGGER.log("context", e);
 	    	    System.out.println("Erreur");
 	    	    System.exit(0);
 			}

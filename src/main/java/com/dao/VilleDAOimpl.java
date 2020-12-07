@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.springframework.stereotype.Repository;
 
 import com.config.JDBCConfiguration;
@@ -11,6 +14,8 @@ import com.dto.Ville;
 
 @Repository
 public class VilleDAOimpl implements VilleDAO {
+	
+	Logger logger = Logger.getLogger("logger");
 
 	public ArrayList<Ville> findAllVilles() {
 		ArrayList<Ville> listVille = new ArrayList<Ville>();
@@ -43,7 +48,8 @@ public class VilleDAOimpl implements VilleDAO {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Erreur");
+			logger.log(Level.INFO, "Erreur");
+//			System.out.println("Erreur");
 			System.exit(0);
 		}
 
