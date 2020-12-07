@@ -16,6 +16,7 @@ import com.dto.Ville;
 public class VilleDAOimpl implements VilleDAO {
 	
 	Logger logger = Logger.getLogger("logger");
+	private static final String ERREUR = "erreur";
 
 	public ArrayList<Ville> findAllVilles() {
 		ArrayList<Ville> listVille = new ArrayList<Ville>();
@@ -48,8 +49,7 @@ public class VilleDAOimpl implements VilleDAO {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.log(Level.INFO, "Erreur");
-//			System.out.println("Erreur");
+			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
 
