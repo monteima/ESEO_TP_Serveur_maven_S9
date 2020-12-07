@@ -2,7 +2,6 @@ package com.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -30,15 +29,13 @@ public class VilleDAOimpl implements VilleDAO {
 //			java.sql.Statement st = null;
 //			st = conn.createStatement();
 			
+			java.sql.Statement st = conn.createStatement();
+			
+
+			ResultSet rs = null;
+
 			String sql1 = "SELECT * FROM `ville_france`";
-			
-			try (Statement st = conn.createStatement()) {
-			
-//			java.sql.Statement st = conn.createStatement();
-			
-
-			ResultSet rs = st.executeQuery(sql1);
-
+			rs = st.executeQuery(sql1);
 
 			while (rs.next()) {
 				Ville ville = new Ville();
@@ -54,11 +51,6 @@ public class VilleDAOimpl implements VilleDAO {
 				listVille.add(ville);
 
 			}
-			
-			}catch (SQLException e) {
-//		        JDBCTutorialUtilities.printSQLException(e);
-		    }
-			
 
 		} catch (Exception e) {
     	    logger.log(Level.INFO, CONTEXT, e);
