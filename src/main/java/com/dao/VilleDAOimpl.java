@@ -17,6 +17,8 @@ public class VilleDAOimpl implements VilleDAO {
 	
 	Logger logger = Logger.getLogger("logger");
 	private static final String ERREUR = "erreur";
+	private static final String CONTEXT = "context";
+
 
 	public ArrayList<Ville> findAllVilles() {
 		ArrayList<Ville> listVille = new ArrayList<Ville>();
@@ -48,7 +50,7 @@ public class VilleDAOimpl implements VilleDAO {
 			}
 
 		} catch (Exception e) {
-    	    logger.log(Level.INFO, "context", e);
+    	    logger.log(Level.INFO, CONTEXT, e);
 			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
@@ -87,7 +89,7 @@ public class VilleDAOimpl implements VilleDAO {
 			}
 
 		} catch (Exception e) {
-    	    logger.log(Level.INFO, "context", e);
+    	    logger.log(Level.INFO, CONTEXT, e);
 			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
@@ -106,7 +108,7 @@ public class VilleDAOimpl implements VilleDAO {
 			statement.executeUpdate(sql1);
 
 		} catch (Exception e) {
-    	    logger.log(Level.INFO, "context", e);
+    	    logger.log(Level.INFO, CONTEXT, e);
 			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
@@ -125,7 +127,7 @@ public class VilleDAOimpl implements VilleDAO {
 			statement.executeUpdate(sql1);
 
 		} catch (Exception e) {
-    	    logger.log(Level.INFO, "context", e);
+    	    logger.log(Level.INFO, CONTEXT, e);
 			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}
@@ -142,7 +144,7 @@ public class VilleDAOimpl implements VilleDAO {
 			statement.executeUpdate(sql1);
 
 		} catch (Exception e) {
-    	    logger.log(Level.INFO, "context", e);
+    	    logger.log(Level.INFO, CONTEXT, e);
 			logger.log(Level.INFO, ERREUR);
 			System.exit(0);
 		}

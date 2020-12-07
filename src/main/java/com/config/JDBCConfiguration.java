@@ -13,7 +13,6 @@ public class JDBCConfiguration {
 
 			Connection conn = null;
 			Logger logger = Logger.getLogger("logger");
-
 			
 			String bdd = "ville_de_france";
 	    	String url = "jdbc:mysql://localhost:3306/" + bdd;
